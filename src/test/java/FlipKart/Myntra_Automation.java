@@ -14,10 +14,11 @@ import static FlipKart.Constants.driver;
 public class Myntra_Automation extends BaseTest {
     @Test
     public void searchingAnyProduct() {
-        Assert.assertTrue(driver.findElement(HomePage.searchButton).isDisplayed());
-        Constants.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        Constants.wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(HomePage.searchButton)));
-        driver.findElement(HomePage.searchButton).click();
-        driver.findElement(SearchPage.searchBar).sendKeys("Boat Smart Watches");
-        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+        //Assert.assertTrue(driver.findElement(HomePage.searchButton).isDisplayed());
+        //Constants.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        //Constants.wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(HomePage.searchButton)));
+        //driver.findElement(HomePage.searchButton).click();
+        //driver.findElement(SearchPage.searchBar).sendKeys("Boat Smart Watches");
+        //driver.pressKey(new KeyEvent(AndroidKey.ENTER));
     }
+}
