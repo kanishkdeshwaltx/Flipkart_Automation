@@ -11,72 +11,86 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class TC01_CheckoutFromCart extends FlipKartBaseClass{
+public class TC01_CheckoutFromCart extends FlipKartBaseClass {
     @Test
     public void Checkout() throws InterruptedException {
 
         try {
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-            Thread.sleep(9000);
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+
+            //Select Language
+            String LanguageText = driver.findElement(By.xpath("//android.widget.TextView[@text='English']")).getText();
+            Assert.assertEquals(LanguageText,"English");
+            System.out.println("Assertion for select language page: PASSED");
             driver.findElement(By.xpath("//android.widget.TextView[@text='English']")).click();
-            //Thread.sleep(4000);
-            driver.findElement(By.xpath("//android.widget.Button[@text='CONTINUE']")).click();
-           // Thread.sleep(9000);
-            driver.hideKeyboard();
+
+            String ContinueButton = driver.findElement(By.id("com.flipkart.android:id/select_btn")).getText();
+            Assert.assertEquals(ContinueButton,"CONTINUE");
+            System.out.println("Assertion for Continue Button: PASSED");
+            driver.findElement(By.id("com.flipkart.android:id/select_btn")).click();
+
+
             //Close page for verify number
+            driver.hideKeyboard();
+            Thread.sleep(3000);
             driver.findElement(By.id("com.flipkart.android:id/custom_back_icon")).click();
-            Thread.sleep(5000);
+
             System.out.println("Search bar to be clicked");
+
             //Search for products page
-            Thread.sleep(7000);
-            //WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-//            wait.until(ExpectedConditions.attributeContains(driver.findElement
-//                    (By.className("android.widget.TextView")),"text","Search for products"));
+
+            System.out.println(driver.getTitle());
             driver.findElement(By.xpath("(//android.widget.TextView[@text='Search for products'])[1]")).click();
-            //Thread.sleep(2000);
-            driver.findElement(By.xpath("//android.widget.EditText[@text='Search for Products, Brands and More']")).sendKeys("OnePlus");
+
+            driver.findElement(By.xpath("//android.widget.EditText[@text='Search for Products, Brands and More']")).sendKeys("OnePlus Mobile");
             System.out.println("Search bar is clicked");
             driver.pressKey(new KeyEvent(AndroidKey.ENTER));
 
             //Deny Location Access
-            //Thread.sleep(3000);
-            String AssertTitle= driver.findElement(By.id("com.flipkart.android:id/permission_title")).getText();
-            Assert.assertEquals(AssertTitle,"Allow Location Access");
 
-            //Thread.sleep(3000);
+            String AssertTitle = driver.findElement(By.id("com.flipkart.android:id/permission_title")).getText();
+            Assert.assertEquals(AssertTitle, "Allow Location Access");
+            System.out.println("Assertion for Allow/Deny access: PASSED");
+
             driver.findElement(By.xpath("//android.widget.Button[@text='NOT NOW']")).click();
 
             //Scrolling to phone
-            Thread.sleep(4000);
-            driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"OnePlus 10 Pro 5G (Volcanic Black, 128 GB) (8 GB RAM)\"))"));
 
-            //Thread.sleep(3000);
-            driver.findElement(By.xpath("//android.widget.TextView[@text='OnePlus 10 Pro 5G (Volcanic Black, 128 GB) (8 GB RAM)']")).click();
+            driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"OnePlus Nord CE 2 Lite 5G (Blue Tide, 128 GB)\"))"));
+            String PhoneName = driver.findElement(By.xpath("//android.widget.TextView[@text='OnePlus Nord CE 2 Lite 5G (Blue Tide, 128 GB)']")).getText();
+            Assert.assertEquals(PhoneName,"OnePlus Nord CE 2 Lite 5G (Blue Tide, 128 GB)");
+            System.out.println("Assertion for Phone Name: PASSED");
+
+            driver.findElement(By.xpath("//android.widget.TextView[@text='OnePlus Nord CE 2 Lite 5G (Blue Tide, 128 GB)']")).click();
 
             //Add to Cart
-            //Thread.sleep(3000);
+
+            String AddToCartText = driver.findElement(By.xpath("//android.widget.TextView[@text='Add to cart']")).getText();
+            Assert.assertEquals(AddToCartText,"Add to cart");
+            System.out.println("Assertion for Add to Cart: PASSED");
+
             driver.findElement(By.xpath("//android.widget.TextView[@text='Add to cart']")).click();
 
             //To view Cart
             driver.pressKey(new KeyEvent(AndroidKey.BACK));
-            //Thread.sleep(3000);
+
             driver.findElement(By.id("com.flipkart.android:id/cart_bg_icon")).click();
 
             //Scroll to Total Amount
             driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"Total Amount\"))"));
-            String amount = driver.findElement(By.xpath("(//android.widget.TextView)[9]")).getText();
-            System.out.println(amount);
-            //double DisplayedAmount = getFormattedAmount(amount,1);
-            //int totaolsum = 19987;
+            //String amount = driver.findElement(By.xpath("(//android.widget.TextView)[9]")).getText();
+            //System.out.println(amount);
+
+
             //Assert.assertEquals(DisplayedAmount,"");
 
             //Remove from Cart
             driver.findElement(By.xpath("//android.widget.TextView[@text='Remove']")).click();
-            driver.findElement(By.xpath("//android.widget.TextView[@text='Remove']")).click();
+
         }
-        catch (Exception e){
-            e.printStackTrace();
+        catch (Exception e) {
             System.out.println("**********Error************");
+            e.printStackTrace();
         }
     }
 }
