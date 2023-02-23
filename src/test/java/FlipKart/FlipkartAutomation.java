@@ -21,7 +21,7 @@ public class FlipkartAutomation {
         driver.findElement(MobileBy.xpath("//android.widget.TextView[@text=\"iphone 13\"]")).click();
         driver.findElement(By.xpath("//android.widget.Button[@text=\"NOT NOW\"]")).click();
         //WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        //wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.androidUIAutomator("new UiScrollable(new uiSelector)).ScrollIntoView(new UiSelector().text(\"APPLE iPhone 13 (Starlight, 256 GB)\"))")));
+        //..wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.androidUIAutomator("new UiScrollable(new uiSelector)).ScrollIntoView(new UiSelector().text(\"APPLE iPhone 13 (Starlight, 256 GB)\"))")));
         Thread.sleep(2000);
         driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new uiSelector)).ScrollIntoView(new UiSelector().text(\"APPLE iPhone 13 (Starlight, 256 GB)\"))")).click();
         driver.findElement(MobileBy.xpath("//android.widget.TextView[@text=\"Add to cart\"]")).click();
