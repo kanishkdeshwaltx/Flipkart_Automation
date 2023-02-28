@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 import static FlipKart.Constants.driver;
 
-public class FlipkartAutomation {
+public class FlipkartAutomation extends BaseTest{
 
     @Test
     public void testcase() throws InterruptedException {

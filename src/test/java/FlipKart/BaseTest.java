@@ -19,10 +19,10 @@ public class BaseTest {
         UiAutomator2Options options = new UiAutomator2Options();
         options.setDeviceName("emulator-5554");
         options.setChromedriverExecutable("");
-        //  options.setApp(System.getProperty("user.dir") + "\\src\\test\\resources\\flipkart.apk");
-        options.setApp(System.getProperty("user.dir") + "\\src\\test\\resources\\Myntra.apk");
-        options.setCapability("appActivity", "com.myntra.android.SplashActivity");
-        options.setCapability("appPackage", "com.myntra.android");        //driverInvoke
+          options.setApp(System.getProperty("user.dir") + "\\src\\test\\resources\\flipkart.apk");
+        //options.setApp(System.getProperty("user.dir") + "\\src\\test\\resources\\Myntra.apk");
+        //options.setCapability("appActivity", "com.myntra.android.SplashActivity");
+        //options.setCapability("appPackage", "com.myntra.android");        //driverInvoke
         driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
     }
